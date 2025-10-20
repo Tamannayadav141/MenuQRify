@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate QR Code for Digital Restaurant Menu</title>
+    <style>
+        body {
+            background-color: #a51c1c4d;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: rgba(255, 0, 21, 0.541);
+            color: #00ff00;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .form-container {
+            width: 600px;
+            margin: 50px auto;
+            border: 1px solid black;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #a5251c93;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="url"],
+
+        input[type="color"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgba(255, 0, 43, 0.712);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgba(200, 0, 30, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Generate QR Code</a>
+    </nav>
+
+    <div class="form-container">
+        <form action="{% url 'generate_qr_code' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            
+            
+
+            <button type="submit">Generate QR Code</button>
+        </form>
+    </div>
+</body>
+</html>

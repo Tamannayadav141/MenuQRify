@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Result</title>
+    <style>
+        body {
+            background-color: #a51c1c4d;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: rgba(255, 0, 21, 0.541);
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .result-container {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+            background-color: #ffffffc0;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #000;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        img {
+            border: 1px solid #000;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgba(255, 0, 43, 0.712);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background-color: rgba(200, 0, 30, 0.8);
+        }
+
+        small {
+            display: block;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'generate_qr_code' %}">Generate QR Code</a>
+    </nav>
+
+    <div class="result-container">
+        <h2>{{ res_name }}</h2>
+        <img id="qrImage" src="{{ qr_url }}" alt="QR CODE">
+
+        <a id="downloadBtn" class="download-btn" download="qr_code.png">Download QR Code</a>
+
+        <small>Thank you for using our QR code Generator</small>
+    </div>
+
+    <script>
+        // Enable download functionality
+        const downloadBtn = document.getElementById('downloadBtn');
+        const qrImage = document.getElementById('qrImage');
+
+        downloadBtn.addEventListener('click', function () {
+            const imageURL = qrImage.src;
+            downloadBtn.href = imageURL;
+        });
+    </script>
+</body>
+</html>
